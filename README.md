@@ -40,7 +40,7 @@
     - Tags
       - simple tags to help identify characteristics of the project, helping with if the code/project can be repurposed
   - supplemental information
-  - deeper description of what is contained in each folder, should the project move past POC and/or further
+    - deeper description of what is contained in each folder, should the project move past POC and/or further
 
 
 **repo structuring process**
