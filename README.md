@@ -46,10 +46,10 @@ latest revised date: 11-DEC-2023
       5. verify selections are correct, enter user ID information, and enter a passphrase
       6. gpg --list-secret-keys --keyid-format=long
       7. copy the longform of the gpg key ID (line with "sec")
-        - in below example, gpg key id = 3AA5C34371567BD2
-          $ gpg --list-secret-keys --keyid-format=long
-          /Users/hubot/.gnupg/secring.gpg
-          ------------------------------------
+        - in below example, gpg key id = 3AA5C34371567BD2\
+          $ gpg --list-secret-keys --keyid-format=long\
+          /Users/hubot/.gnupg/secring.gpg\
+          \--------------------------------\
           sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
       8. gpg --armor --export 3AA5C34371567BD2, and copy entire output including "-----BEGIN PGP PUBLIC KEY BLOCK-----" and "---END PGP PUBLIC KEY BLOCK-----"
       9. move to github web interface and navigate to profile top right -> settings -> access -> ssh and gpg keys -> New GPG Key
