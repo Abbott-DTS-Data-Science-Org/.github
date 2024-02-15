@@ -36,32 +36,34 @@ latest revised date: 11-DEC-2023
   - displaying commit verification in github web interface
     - click on your profile top right -> settings -> access -> ssh and gpg keys -> vigilant mode -> enable flag unsigned commits as unverified
   1. open Git Bash
-  2. check for existing gpg keys: gpg --list-secret-keys --keyid-format=long
+  2. check for existing gpg keys: `gpg --list-secret-keys --keyid-format=long`
     - if something returns, move to step #2.7
     - else,
-      1. gpg --full-generate-key
+      1. generate a key via gpg: `gpg --full-generate-key`
       2. specify type of key (default is fine. just hit enter)
       3. specify key size (default is fine. just hit enter)
       4. enter length of time key should be valid (0 is fine in most cases- hit enter)
       5. verify selections are correct, enter user ID information, and enter a passphrase
-      6. gpg --list-secret-keys --keyid-format=long
+      6. get gpg key ID: `gpg --list-secret-keys --keyid-format=long`
       7. copy the longform of the gpg key ID (line with "sec")
         - in below example, gpg key id = 3AA5C34371567BD2\
-          $ gpg --list-secret-keys --keyid-format=long\
+          >$ gpg --list-secret-keys --keyid-format=long\
           /Users/hubot/.gnupg/secring.gpg\
           \--------------------------------\
           sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
-      8. gpg --armor --export 3AA5C34371567BD2, and copy entire output including "-----BEGIN PGP PUBLIC KEY BLOCK-----" and "---END PGP PUBLIC KEY BLOCK-----"
+
+      8. run `gpg --armor --export 3AA5C34371567BD2`, and copy entire output including "-----BEGIN PGP PUBLIC KEY BLOCK-----" and "---END PGP PUBLIC KEY BLOCK-----"
       9. move to github web interface and navigate to profile top right -> settings -> access -> ssh and gpg keys -> New GPG Key
       10. enter a name (doesn't really matter what it is), and paste output from #8
   3. tell github about the signing signature
-    1. using ID from step #2.7 above, run git config --global user.signingkey 3AA5C34371567BD2
+    1. using ID from step #2.7 above, run `git config --global user.signingkey 3AA5C34371567BD2`
       - MAKE SURE TO REPLACE THE GPG KEY ID STRING WITH YOUR UNIQUE ID FROM STEP #2.7 ABOVE
-    2. configure Git to sign all commits by default: git config --global commit.gpgsign true
+    2. configure Git to sign all commits by default: `git config --global commit.gpgsign true`
     3. verify GPG is set to the necessary path
-      1. locate gpg. run: where gpg
-      2. verify gpg has the proper path. run: git config --global gpg.program "C:\Program Files\Git\usr\bin\gpg.exe"
-        - the path string should be what step #3.3.1 outputted
+      1. locate gpg. run: `where gpg`
+      2. verify gpg has the proper path. run: `git config --global gpg.program "C:\Program Files\Git\usr\bin\gpg.exe"`
+          - the path string should be what step #3.3.1 outputted
+          - the path string must be in quotes
 
 
 **README.md**
